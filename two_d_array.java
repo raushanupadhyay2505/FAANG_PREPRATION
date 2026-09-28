@@ -48,6 +48,51 @@ public class two_d_array {
 
         }
     }
+
+    public static void sum_digonal(int arr[][]){
+        int sum=0;
+
+        for(int i=0;i<arr.length;i++){
+            sum=sum+arr[i][i];
+
+            if(i!=arr.length-i-1){
+                sum=sum+arr[i][arr.length-1-i];
+            }
+        }
+
+        System.out.println("The sum of digonal is "+sum);
+    }
+
+    public static void search(int arr[][],int k){
+        int i=0;
+        int j=arr[0].length-1;
+        while(i<arr.length && j>=0){
+            if(arr[i][j]==k){
+                System.out.println(k+" is present at index "+i+","+j);
+                return;
+            }
+
+            else if(arr[i][j]>k){
+                j--;
+            }
+            else{
+                i++;
+            }
+        }
+
+        System.out.println(k+" is not present");
+    }
+
+    public static void transpose(int arr[][]){
+        int n=arr.length;
+        int m=arr[0].length;
+        int arr1[][]=new int[m][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                arr1[j][i]=arr[i][j];
+            }
+        }
+    }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the number of rows");
@@ -67,7 +112,18 @@ public class two_d_array {
         System.out.println("The elements of array are ");
         print(arr);
 
-        System.out.println("The spiral is ");
-        spiral(arr);
+        // System.out.println("The spiral is ");
+        // spiral(arr);
+
+        //sum_digonal(arr);
+
+        // System.out.println("Enter the searching element");
+        // int k=sc.nextInt();
+
+        // search(arr, k);
+
+        transpose(arr);
+        System.out.println("After transpose");
+        print(arr);
     }
 }
